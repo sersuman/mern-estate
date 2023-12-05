@@ -1,35 +1,23 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import About from './pages/About';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Signin from './pages/Signin';
-import Signup from './pages/Signup';
+import SignIn from './pages/Signin';
+import SignUp from './pages/Signup';
+import Header from './components/Header';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />
-  },
-  {
-    path: "/about",
-    element: <About />
-  },
-  {
-    path: "/profile",
-    element: <Profile />
-  },
-  {
-    path: "/sign-in",
-    element: <Signin />
-  },
-  { 
-    path: "/sign-up",
-    element: <Signup />
-  }
-])
 export default function App() {
   return (
-    <RouterProvider router={router} />
+    <BrowserRouter>
+    <Header />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/sign-in" element={<SignIn />}/>
+        <Route path="/sign-up" element={<SignUp />}/>
+        <Route path="/about" element={<About />}/>
+        <Route path="/profile" element={<Profile />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
